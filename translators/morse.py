@@ -9,6 +9,7 @@ Created on Fri Jan  6 17:43:25 2017
 #   Imports
 #
 
+
 def convert_from_morse(ToConvert, MinLetters=1):
     """Converts a string of . and -'s to Letters"""
     
