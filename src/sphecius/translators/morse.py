@@ -64,6 +64,11 @@ class Morse(object):
         dict_morse['---..'] = '8'
         dict_morse['----.'] = '9'
         
+        dict_morse['.-.-.-'] = '.'
+        dict_morse['--..--'] = ','
+        dict_morse['..--..'] = '?'
+        dict_morse['-.-.--'] = '!'
+        
         dict_letters = dict()
         for key in dict_morse.keys():
             dict_letters[dict_morse[key]] = key
@@ -83,7 +88,7 @@ class Morse(object):
             elif letter in self.__dict_to_morse.keys():
                 output += self.__dict_to_morse[letter]
             else:
-                output += '?'
+                output += '*'
             output += '|'
         
         return output.strip()
