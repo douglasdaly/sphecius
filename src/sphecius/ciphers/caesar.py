@@ -8,7 +8,7 @@ Created on Sat Jan  7 22:19:59 2017
 #
 #   Imports
 #
-
+import sphecius.string_helpers as sh
 
 #
 #   Class
@@ -21,17 +21,15 @@ class Caesar(object):
         """Default Constructor"""
         self.__shift = shift
         self.__alphabet = alphabet
-        self.__shifted = self._get_shifted_alphabet()
+        
+        if shift > 0:
+            self.__shifted = sh.shift_forward(alphabet, shift)
+        else:
+            self.__shifted = sh.shift_backward(alphabet, -shift)
+        
         self.__encryptor = dict(zip(self.__alphabet, self.__shifted))
         self.__decryptor = dict(zip(self.__shifted, self.__alphabet))
-    
-    
-    def _get_shifted_alphabet(self):
-        """Gets the Shifted Alphabet Sequence"""
-        shifted = self.__alphabet[-self.__shift::]
-        shifted.extend(self.__alphabet[:len(self.__alphabet)-self.__shift:])
-        return shifted
-    
+        
     
     def encrypt(self, plaintext):
         """Encrypts the given plaintext based on the set parameters of this class"""
