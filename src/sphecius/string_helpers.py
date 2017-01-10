@@ -36,8 +36,10 @@ def shift_forward(string, spaces):
     output = string[-spaces::]
     if type(string) == str:        
         output += string[:len(string)-spaces:]
+    elif type(string) == list:
+        output.extend(string[:len(string)-spaces:])
     else:
-        output.append(string[:len(string)-spaces:])
+        output = string
     
     return output
 
@@ -48,7 +50,9 @@ def shift_backward(string, spaces):
     output = string[spaces::]
     if type(string) == str:
         output += string[:spaces:]
+    elif type(string) == list:
+        output.extend(string[:spaces:])
     else:
-        output.append(string[:spaces:])
+        output = string
     
     return output
