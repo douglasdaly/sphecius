@@ -8,7 +8,7 @@ Created on Wed Jan 11 17:51:54 2017
 #
 #   Imports
 #
-from sphecius.alphabets.base import Alphabet
+from . import Alphabet
 
 #
 #   Class

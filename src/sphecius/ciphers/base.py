@@ -8,7 +8,7 @@ Created on Wed Jan 12 17:49:00 2017
 #
 #   Imports
 #
-from sphecius.alphabets import English
+from ..alphabets import English
 
 #
 #   Classes
@@ -21,11 +21,11 @@ class Cipher(object):
     def __init__(self, alphabet=English):
         """Default/Abstract Constructor"""
         self._alphabet = alphabet
-        pass
+        self._key = None
 
     def set_key(self, key):
         """Sets the Key for this Cipher object"""
-        pass
+        self._key = key.upper()
 
     def encrypt(self, plaintext):
         """Abstract Encrypt Method"""

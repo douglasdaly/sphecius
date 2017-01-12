@@ -9,7 +9,7 @@ Created on Mon Jan  9 18:45:33 2017
 #   Imports
 #
 import string
-from sphecius.alphabets.base import Alphabet
+from . import Alphabet
 
 #
 #   Class

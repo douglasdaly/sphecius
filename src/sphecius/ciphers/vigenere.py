@@ -8,77 +8,73 @@ Created on Sat Jan  7 22:17:38 2017
 #
 #   Imports
 #
-import sphecius.string_helpers as sh
+from .. import string_helpers as sh
+from . import Cipher
 
 #
 #   Class
 #
 
-class Vigenere(object):
+class Vigenere(Cipher):
     """Vigenere Cipher Class"""
     
     def __init__(self, alphabet, initial_shift=0):
         """Default Constructor"""
+        super(Vigenere, self).__init__(alphabet=alphabet)
         cryptors = self.__build_cryptors(alphabet, initial_shift)
         self.__encryptor = cryptors[0]
         self.__decryptor = cryptors[1]
     
-    
     def __build_cryptors(self, alphabet, initial_shift=0):
         """Builds the Encryption Lookup Table"""
-        lAlphabet = len(alphabet)
+        len_alphabet = len(alphabet)
         
-        cipherTable = dict()
-        decipherTable = dict()
-        for i in range(lAlphabet):
-            cLetter = alphabet[i]
-            cAlphabet = sh.shift_backward(alphabet, (i+initial_shift) % lAlphabet)
+        cipher_table = dict()
+        decipher_table = dict()
+        for i in range(len_alphabet):
+            c_letter = alphabet[i]
+            c_alphabet = sh.shift_backward(alphabet, (i+initial_shift) % len_alphabet)
+
+            cipher_table[c_letter] = dict()
+            cipher_table[c_letter] = dict()
+            for j in range(len_alphabet):
+                cipher_table[c_letter][alphabet[j]] = c_alphabet[j]
+                decipher_table[c_letter][c_alphabet[j]] = alphabet[j]
             
-            cipherTable[cLetter] = dict()
-            decipherTable[cLetter] = dict()
-            for j in range(lAlphabet):
-                cipherTable[cLetter][alphabet[j]] = cAlphabet[j]
-                decipherTable[cLetter][cAlphabet[j]] = alphabet[j]
-            
-        return (cipherTable, decipherTable)
-    
-    
-    def encrypt(self, string, key):
+        return cipher_table, decipher_table
+
+    def encrypt(self, plaintext, key):
         """Encrypts the given string using the given key and the set alphabet"""
+        if type(plaintext) == list:
+            plaintext = sh.list_to_string(plaintext)
+
+        plaintext = plaintext.upper()
+        key = self._key
         
-        if type(string) == list:
-            string = sh.list_to_string(string)
-        
-        string = string.upper()
-        key = key.upper()
-        
-        lKey = len(key)
+        len_key = len(key)
         output = list()
-        for i in range(len(string)):
-            sLet = string[i]
-            kLet = key[i % lKey]
-            cLet = self.__encryptor[sLet][kLet]
-            output.append(cLet)
+        for i in range(len(plaintext)):
+            s_let = plaintext[i]
+            k_let = key[i % len_key]
+            c_let = self.__encryptor[s_let][k_let]
+            output.append(c_let)
         
         return sh.list_to_string(output)
     
-    
-    def decrypt(self, cipher, key):
+    def decrypt(self, ciphertext):
         """Decrypts the given Cipher Text with the given Key"""
+        if type(ciphertext) == list:
+            ciphertext = sh.list_to_string(ciphertext)
         
-        if type(cipher) == list:
-            cipher = sh.list_to_string(cipher)
+        ciphertext = ciphertext.upper()
+        key = self._key
         
-        cipher = cipher.upper()
-        key = key.upper()
-        
-        lKey = len(key)
+        len_key = len(key)
         output = list()
-        for i in range(len(cipher)):
-            cLet = cipher[i]
-            kLet = key[i % lKey]
-            sLet = self.__decryptor[kLet][cLet]
-            output.append(sLet)
+        for i in range(len(ciphertext)):
+            c_let = ciphertext[i]
+            k_let = key[i % len_key]
+            s_let = self.__decryptor[k_let][c_let]
+            output.append(s_let)
         
         return sh.list_to_string(output)
-    
