@@ -14,9 +14,10 @@ from sphecius.alphabets.base import Alphabet
 #   Class
 #
 
+
 class AngloSaxonRunic(Alphabet):
     """Anglo-Saxon Rune Letters Class"""
     
     def __init__(self):
         """Default Constructor"""
-        self._alphabet = "ᚠᚢᚦᚩᚱᚳᚷᚹᚻᚾᛁᛄᛇᛈᛉᛋᛏᛒᛖᛗᛚᛝᛟᛞᚪᚫᚣᛡᛠ";
+        self._alphabet = "ᚠᚢᚦᚩᚱᚳᚷᚹᚻᚾᛁᛄᛇᛈᛉᛋᛏᛒᛖᛗᛚᛝᛟᛞᚪᚫᚣᛡᛠ"

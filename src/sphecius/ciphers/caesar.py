@@ -9,26 +9,28 @@ Created on Sat Jan  7 22:19:59 2017
 #   Imports
 #
 import sphecius.string_helpers as sh
+from sphecius.ciphers import Cipher
 
 #
 #   Class
 #
 
-class Caesar(object):
+
+class Caesar(Cipher):
     """Caesar Cipher Class"""
     
     def __init__(self, alphabet, shift):
         """Default Constructor"""
-        self.__shift = shift
-        self.__alphabet = alphabet
+        self(alphabet=alphabet)
+        self._shift = shift
         
         if shift > 0:
             self.__shifted = sh.shift_forward(alphabet, shift)
         else:
             self.__shifted = sh.shift_backward(alphabet, -shift)
         
-        self.__encryptor = dict(zip(self.__alphabet, self.__shifted))
-        self.__decryptor = dict(zip(self.__shifted, self.__alphabet))
+        self.__encryptor = dict(zip(self._alphabet, self.__shifted))
+        self.__decryptor = dict(zip(self.__shifted, self._alphabet))
         
     
     def encrypt(self, plaintext):
