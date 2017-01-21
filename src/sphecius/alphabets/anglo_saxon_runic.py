@@ -8,7 +8,7 @@ Created on Wed Jan 11 17:51:54 2017
 #
 #   Imports
 #
-from . import Alphabet
+from base import Alphabet
 
 #
 #   Class

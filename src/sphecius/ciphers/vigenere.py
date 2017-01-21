@@ -9,7 +9,7 @@ Created on Sat Jan  7 22:17:38 2017
 #   Imports
 #
 from .. import string_helpers as sh
-from . import Cipher
+from base import Cipher
 
 #
 #   Class
