@@ -87,6 +87,28 @@ class NGram(object):
         rc = Counter()
         for word in splat:
             tc = Counter(self.get_single_word_occurrences(word))
-            rc = rc + tc
+            rc.update(tc)
 
         return dict(rc)
+
+    def convert_occurrences_to_sum_probabilities(self, occurrences):
+        """Converts the given Occurrence dictionary to the sum of the NGram probabilities"""
+        output = dict()
+        for (k, v) in occurrences.iteritems():
+            output[k] = v * self.__gram_dict[k]
+
+        return output
+
+    def get_text_occurrence_rates(self, text, remove_spaces=False):
+        """Gets the occurrence rates for the given text"""
+        occurrences = self.get_text_occurrences(text, remove_spaces=remove_spaces)
+
+        run_tot = 0.0
+        for val in occurrences.values():
+            run_tot += val
+
+        output = dict()
+        for (k, v) in occurrences.iteritems():
+            output[k] = v / run_tot
+
+        return output
