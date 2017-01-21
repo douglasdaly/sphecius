@@ -112,3 +112,18 @@ class NGram(object):
             output[k] = v / run_tot
 
         return output
+
+    def get_text_relative_occurrance_rates(self, occurrence_rates):
+        """Gets the relative occurrence rates given a Dictionary of Ocurrence Rates"""
+        output = dict()
+
+        run_tot = 0.0
+        for k in occurrence_rates.keys():
+            t = self.__gram_dict[k]
+            run_tot += t
+            output[k] = t
+
+        for k in output.keys():
+            output[k] /= run_tot
+
+        return output
