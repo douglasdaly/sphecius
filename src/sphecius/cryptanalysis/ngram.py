@@ -10,6 +10,8 @@ Created on Sat Jan  21 11:21:00 2017
 #
 import os.path
 
+from .. import string_helpers
+
 #
 #   Variables
 #
@@ -56,4 +58,10 @@ class NGram(object):
 
     def get_occurrences(self, text, remove_spaces=False):
         """Gets occurrences of this N-Gram from the given Text"""
-        
+        # - First strip punctuation
+        text = string_helpers.remove_punctuation(text).upper()
+
+        if remove_spaces:
+            text = text.replace(' ', '')
+
+        splat = text.split(' ')
