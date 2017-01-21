@@ -8,51 +8,63 @@ Created on Mon Jan  9 19:07:09 2017
 #
 #   Imports
 #
+import regex
+
+
+#
+#   Variables
+#
 
 
 #
 #   Functions
 #
 
-def string_to_list(string, seperator=' '):
+def string_to_list(text, seperator=' '):
     """Converts a string to a list of 'letters' using the (optional) seperator"""
 
-    return string.split(seperator)
+    return text.split(seperator)
 
 
-def list_to_string(string):
+def list_to_string(text):
     """Converts a list of 'letters' to a contiguous String"""
     
     output = ''
-    for letter in string:
+    for letter in text:
         output += letter
     
     return output
 
 
-def shift_forward(string, spaces):
+def shift_forward(text, spaces):
     """Shifts the given string or list the given number of spaces forward"""
     
-    output = string[-spaces::]
-    if type(string) == str:        
-        output += string[:len(string)-spaces:]
-    elif type(string) == list:
-        output.extend(string[:len(string)-spaces:])
+    output = text[-spaces::]
+    if type(text) == str:
+        output += text[:len(text)-spaces:]
+    elif type(text) == list:
+        output.extend(text[:len(text)-spaces:])
     else:
-        output = string
+        output = text
     
     return output
 
 
-def shift_backward(string, spaces):
+def shift_backward(text, spaces):
     """Shifts the given string or list the given number of spaces backward"""
     
-    output = string[spaces::]
-    if type(string) == str:
-        output += string[:spaces:]
-    elif type(string) == list:
-        output.extend(string[:spaces:])
+    output = text[spaces::]
+    if type(text) == str:
+        output += text[:spaces:]
+    elif type(text) == list:
+        output.extend(text[:spaces:])
     else:
-        output = string
+        output = text
     
     return output
+
+
+def remove_punctuation(text):
+    """Removes all punctuation from the given string"""
+
+    return regex.sub(ur"\p{P}+", "", text)
