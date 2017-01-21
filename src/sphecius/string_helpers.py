@@ -8,7 +8,7 @@ Created on Mon Jan  9 19:07:09 2017
 #
 #   Imports
 #
-import regex
+import string
 
 
 #
@@ -67,4 +67,5 @@ def shift_backward(text, spaces):
 def remove_punctuation(text):
     """Removes all punctuation from the given string"""
 
-    return regex.sub(ur"\p{P}+", "", text)
+    translator = str.maketrans('', '', string.punctuation)
+    return text.translate(translator)
