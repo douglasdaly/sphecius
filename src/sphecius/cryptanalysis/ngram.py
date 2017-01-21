@@ -113,7 +113,7 @@ class NGram(object):
 
         return output
 
-    def get_text_relative_occurrence_rates(self, occurrence_rates):
+    def get_relative_occurrence_rates(self, occurrence_rates):
         """Gets the relative occurrence rates given a Dictionary of Occurrence Rates"""
         output = dict()
 
