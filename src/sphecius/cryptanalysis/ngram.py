@@ -9,6 +9,7 @@ Created on Sat Jan  21 11:21:00 2017
 #   Imports
 #
 import os.path
+from collections import Counter
 
 from .. import string_helpers
 
@@ -56,7 +57,24 @@ class NGram(object):
 
         return output
 
-    def get_occurrences(self, text, remove_spaces=False):
+    def get_single_word_occurrences(self, word):
+        """Gets occurrences of this N-Gram from the given Word"""
+        if len(word) < self.__n:
+            return dict()
+
+        output = dict()
+        for c in range(len(word)-self.__n+1):
+            tw = word[c:c+self.__n]
+
+            if tw in self.__gram_dict.keys():
+                if tw not in output.keys():
+                    output[tw] = 1
+                else:
+                    output[tw] += 1
+
+        return output
+
+    def get_text_occurrences(self, text, remove_spaces=False):
         """Gets occurrences of this N-Gram from the given Text"""
         # - First strip punctuation
         text = string_helpers.remove_punctuation(text).upper()
@@ -65,3 +83,10 @@ class NGram(object):
             text = text.replace(' ', '')
 
         splat = text.split(' ')
+
+        rc = Counter()
+        for word in splat:
+            tc = Counter(self.get_single_word_occurrences(word))
+            rc = rc + tc
+
+        return dict(rc)
