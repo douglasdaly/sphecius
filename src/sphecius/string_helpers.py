@@ -112,3 +112,24 @@ def convert_text_to_matrix_2d(text, axis_size, axis=0, padding=None):
         li_cols.append(subarr)
 
     return np.concatenate(li_cols, axis=axis)
+
+def convert_matrix_to_text_2d(matrix, axis=0):
+    """Converts a text Matrix back to String
+
+    Given a text matrix, convert it back into a single string.
+
+    :param numpy.matrix matrix: Matrix of text to convert back to string
+    :param int axis: [Optional] Which axis to limit (0 for Column, 1 for Rows; defaults to 0)
+
+    :return: String converted back from matrix
+    :rtype: str
+
+    """
+    ret = ''
+    for i in range(matrix.shape[axis]):
+        if axis == 0:
+            ret += ''.join(matrix[i, :])
+        else:
+            ret += ''.join(matrix[:, i])
+
+    return ret
