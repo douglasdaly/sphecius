@@ -4,6 +4,7 @@
 from base import Cipher
 from caesar import Caesar
 from vigenere import Vigenere
+from hill import Hill
 
 #
 #   All Modules Setup
@@ -11,5 +12,6 @@ from vigenere import Vigenere
 __all__ = [
     'base',
     'caesar',
-    'vigenere'
+    'vigenere',
+    'hill'
 ]
