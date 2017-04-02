@@ -32,15 +32,17 @@ class Hill(Cipher):
         else:
             raise Exception('Invalid (non-invertible) Key given!')
 
-    def encrypt(self, plaintext):
+    def encrypt(self, plaintext, padding=None):
         """Hill Cipher Encryption"""
+        return self.__run_algorithm(plaintext, self._key, padding=padding)
 
     def decrypt(self, ciphertext):
         """Hill Cipher Decryption"""
         decrypt_key = np.linalg.inv(self._key)
+        return self.__run_algorithm(ciphertext, decrypt_key)
 
     def __run_algorithm(self, text, key, padding=None):
-        """
+        """Helper function to run Hill algorithm
 
         :param str text:
         :param numpy.matrix key:
@@ -56,9 +58,17 @@ class Hill(Cipher):
         text_mat = sh.convert_text_to_matrix_2d(text, axis_size=key.shape[0], axis=1, padding=padding)
         v_a2i = np.vectorize(self._alphabet.a2i)
         num_mat = v_a2i(text_mat)
-
         mod_z = self._alphabet.size
 
+        # - Encoding
+        enc_mat = (key * num_mat) % self._alphabet.size
+
+        # - Convert back to string
+        v_i2a = np.vectorize(self._alphabet.i2a)
+        text_mat = v_i2a(enc_mat)
+        ret = sh.convert_matrix_to_text_2d(text_mat, axis=1)
+
+        return ret
 
 
     def __valid_hill_key(self, key):
