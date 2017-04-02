@@ -36,3 +36,7 @@ class Alphabet(object):
     def a2i(self, letter):
         """Base get Index of Letter Method"""
         return self._alphabet.find(letter.upper())
+
+    def size(self):
+        """Length of the alphabet"""
+        return len(self._alphabet)
