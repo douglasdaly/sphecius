@@ -71,6 +71,31 @@ def remove_punctuation(text):
     return text.translate(translator)
 
 
+def replace_stripped_text(original_text, stripped_text, chars_stripped=string.punctuation):
+    """Inserts punctuation back into stripped string
+
+    :param str original_text: Original text with punctuation
+    :param str stripped_text: Text stripped of punctuation to put punctuation back in
+    :param list chars_stripped: [Optional] List of Stripped Characters to put back in
+
+    :return: String with stripped characters replaced
+    :rtype: str
+
+    """
+    ret = ''
+    i_s = 0
+    for i_o in range(len(original_text)):
+        if original_text[i_o] in chars_stripped:
+            ret += original_text[i_o]
+            if original_text[i_o] == '.':
+                ret += ' '
+        else:
+            ret += stripped_text[i_s]
+            i_s += 1
+
+    return ret
+
+
 def convert_text_to_matrix_2d(text, axis_size, axis=0, padding=None):
     """Converts the given Text to a Matrix
 
@@ -112,6 +137,7 @@ def convert_text_to_matrix_2d(text, axis_size, axis=0, padding=None):
         li_cols.append(subarr)
 
     return np.concatenate(li_cols, axis=axis)
+
 
 def convert_matrix_to_text_2d(matrix, axis=0):
     """Converts a text Matrix back to String
