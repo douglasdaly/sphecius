@@ -27,10 +27,10 @@ def read(filename):
 #
 setup(
     name='sphecius',
-    author='Douglas Daly',
+    author='Doug Daly',
     author_email='douglas.daly89@gmail.com',
     description='A library for cryptanalysis and cryptography.',
-    keywords='cryptanalysis cryptography',
+    keywords='cryptanalysis cryptography cryptology',
     version='0.1dev',
     packages=['sphecius'],
     license='MIT',
