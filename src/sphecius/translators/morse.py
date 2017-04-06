@@ -5,6 +5,7 @@ Created on Fri Jan  6 17:43:25 2017
 @author: doug
 """
 
+
 #
 #   Imports
 #
@@ -20,8 +21,7 @@ class Morse(object):
         dict_tup = self.__generate_morse_code_dictionaries()
         self.__dict_to_morse = dict_tup[0]
         self.__dict_from_morse = dict_tup[1]
-    
-    
+
     def __generate_morse_code_dictionaries(self):
         """Generates a dict() object of Morse Code"""
         
@@ -74,8 +74,7 @@ class Morse(object):
             dict_letters[dict_morse[key]] = key
         
         return (dict_letters, dict_morse)
-    
-    
+
     def convert_to(self, to_convert):
         """Converts the given letter string to morse code"""
         
@@ -92,8 +91,7 @@ class Morse(object):
             output += '|'
         
         return output.strip()
-                
-    
+
     def convert_from(self, to_convert):
         """Converts a morse string with spaces to the english letters"""
         
@@ -108,8 +106,7 @@ class Morse(object):
             output += self.convert_from_no_spaces(word, len(word))
         
         return output
-    
-    
+
     def convert_from_no_spaces(self, to_convert, min_letters=1):
         """Converts a string of . and -'s to Letters with no spaces/breaks in it"""
         

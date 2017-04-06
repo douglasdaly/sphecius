@@ -12,6 +12,8 @@ from .. import string_helpers as sh
 from .base import Cipher
 
 import numpy as np
+import sympy
+
 
 #
 #   Class
@@ -30,7 +32,7 @@ class Hill(Cipher):
         if self.__valid_hill_key(key):
             self._key = key
         else:
-            raise Exception('Invalid (non-invertible) Key given!')
+            raise Exception('Invalid Key given!')
 
     def encrypt(self, plaintext, padding=None):
         """Hill Cipher Encryption"""
@@ -38,7 +40,7 @@ class Hill(Cipher):
 
     def decrypt(self, ciphertext):
         """Hill Cipher Decryption"""
-        decrypt_key = np.linalg.inv(self._key)
+        decrypt_key = self.__get_finite_inverse(self._key)
         return self.__run_algorithm(ciphertext, decrypt_key)
 
     def __run_algorithm(self, text, key, padding=None):
@@ -58,18 +60,33 @@ class Hill(Cipher):
         text_mat = sh.convert_text_to_matrix_2d(text, axis_size=key.shape[0], axis=1, padding=padding)
         v_a2i = np.vectorize(self._alphabet.a2i)
         num_mat = v_a2i(text_mat)
-        mod_z = self._alphabet.size
 
         # - Encoding
-        enc_mat = (key * num_mat) % self._alphabet.size
+        enc_mat = ((key * num_mat) % self._alphabet.size) + 1
 
         # - Convert back to string
         v_i2a = np.vectorize(self._alphabet.i2a)
         text_mat = v_i2a(enc_mat)
         ret = sh.convert_matrix_to_text_2d(text_mat, axis=1)
 
-        return ret
+        return sh.replace_stripped_text(text, ret)
 
+    def __get_finite_inverse(self, key):
+        """Gets the Inverse of the given Key over a Finite Set
+
+        :param np.matrix key: Key Matrix to Invert
+
+        :return: Inverse Matrix (if exists) otherwise None
+        :rtype: np.matrix
+
+        """
+        try:
+            inv_key = (np.matrix(sympy.Matrix(key).inv_mod(self._alphabet.size)) + 1).astype(int)
+            return inv_key
+        except sympy.NonSquareMatrixError:
+            return None
+        except sympy.ValueError:
+            return None
 
     def __valid_hill_key(self, key):
         """Checks if the given Key Matrix is valid
@@ -80,6 +97,7 @@ class Hill(Cipher):
         :rtype: bool
 
         """
+        # - Check the Shape
         sz_tup = key.shape
         if len(sz_tup) != 2:
             return False
@@ -87,8 +105,14 @@ class Hill(Cipher):
             if sz_tup[0] != sz_tup[1]:
                 return False
 
-        try:
-            np.linalg.inv(key)
+        # - Check Even/Odd Criteria
+        for iAx in range(2):
+            t = np.sum(key % 2, axis=iAx)
+            if not((t > 0).all() and (t < sz_tup[iAx]).all()):
+                return False
+
+        # - Check that Inverse Exists
+        if self.__get_finite_inverse(key) is not None:
             return True
-        except np.linalg.LinAlgError:
+        else:
             return False

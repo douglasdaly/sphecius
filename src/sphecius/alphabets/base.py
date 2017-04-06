@@ -31,11 +31,13 @@ class Alphabet(object):
 
     def i2a(self, index):
         """Base get Letter at Index Method"""
-        return self._alphabet[index]
+        if index < 1 or index > self.size():
+            return None
+        return self._alphabet[index-1]
 
     def a2i(self, letter):
         """Base get Index of Letter Method"""
-        return self._alphabet.find(letter.upper())
+        return self._alphabet.find(letter.upper()) + 1
 
     def size(self):
         """Length of the alphabet"""
