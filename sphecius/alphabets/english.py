@@ -9,7 +9,7 @@ Created on Mon Jan  9 18:45:33 2017
 #   Imports
 #
 import string
-from base import Alphabet
+from .base import Alphabet
 
 #
 #   Class

@@ -1,10 +1,10 @@
 #
 #   Imports
 #
-import alphabets
-import ciphers
-import cryptanalysis
-import translators
+from . import alphabets
+from . import ciphers
+from . import cryptanalysis
+from . import translators
 
 #
 #   All Setup
