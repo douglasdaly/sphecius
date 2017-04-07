@@ -14,7 +14,7 @@ Created on Sat Jan  7 20:49:03 2017
 #   Class
 #
 
-class Gematria(object):
+class CicadaGematria(object):
     """
     Rune Translator Class
     """
