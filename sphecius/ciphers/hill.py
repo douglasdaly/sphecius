@@ -62,7 +62,7 @@ class Hill(Cipher):
         num_mat = v_a2i(text_mat)
 
         # - Encoding
-        enc_mat = ((key * num_mat) % self._alphabet.size) + 1
+        enc_mat = ((key * num_mat) % self._alphabet.size()) + 1
 
         # - Convert back to string
         v_i2a = np.vectorize(self._alphabet.i2a)
@@ -81,7 +81,7 @@ class Hill(Cipher):
 
         """
         try:
-            inv_key = (np.matrix(sympy.Matrix(key).inv_mod(self._alphabet.size)) + 1).astype(int)
+            inv_key = (np.matrix(sympy.Matrix(key).inv_mod(self._alphabet.size())) + 1).astype(int)
             return inv_key
         except sympy.NonSquareMatrixError:
             return None
