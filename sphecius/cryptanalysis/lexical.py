@@ -75,7 +75,7 @@ class Lexical(object):
         :rtype: dict
 
         """
-        d_freqs = character.get_character_frequencies(text, strip_punctuation)
+        d_freqs = Lexical.get_character_frequencies(text, strip_punctuation)
         n_tot = sum(d_freqs.values())
         for k in d_freqs.keys():
             d_freqs[k] /= n_tot
