@@ -154,8 +154,8 @@ def convert_matrix_to_text_2d(matrix, axis=0):
     ret = ''
     for i in range(matrix.shape[axis]):
         if axis == 0:
-            ret += ''.join(matrix[i, :])
+            ret += ''.join(matrix[i, :].tolist()[0])
         else:
-            ret += ''.join(matrix[:, i])
+            ret += ''.join(matrix[:, i].tolist()[0])
 
     return ret
