@@ -19,15 +19,8 @@ from ..alphabets import Alphabet
 class Lexical(object):
     """Lexical analysis of text"""
 
-    def __init__(self, alphabet):
-        """Default Constructor
-
-        :param Alphabet alphabet: Alphabet to do Analysis over
-
-        """
-        self._alphabet = alphabet
-
-    def index_of_coincidence(self, text):
+    @staticmethod
+    def index_of_coincidence(text):
         """Gets the IOC of the given Text
 
         :param str text: Text to get IOC over
@@ -36,11 +29,14 @@ class Lexical(object):
         :rtype: dict
 
         """
-        dict_probs = Character.get_character_probabilities(text=text, strip_punctuation=True)
-        for ch in self._alphabet.get_alphabet_list():
-            if ch not in dict_probs.keys():
-                dict_probs[ch] = 0.
-        return dict_probs
+        strip_text = string_helpers.remove_punctuation(text).replace(' ', '')
+        dict_freqs = Lexical.get_character_frequencies(text=strip_text, strip_punctuation=False)
+        num = 0.
+        denom = len(strip_text) * (len(strip_text)-1)
+        for ch in dict_freqs.keys():
+            num += dict_freqs[ch] * (dict_freqs[ch]-1)
+        return num / denom
+
 
     @staticmethod
     def get_character_frequencies(text, strip_punctuation=True):
