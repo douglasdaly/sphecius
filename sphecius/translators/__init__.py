@@ -2,8 +2,10 @@
 #   Imports
 #
 from .base import Translator
-from .cicada_gematria import CicadaGematria
 from .morse import Morse
+
+from .liber_primus_to_english import LiberPrimusToEnglish
+from .liber_primus_to_primes import LiberPrimusToPrimes
 
 
 #
@@ -11,5 +13,7 @@ from .morse import Morse
 #
 __all__ = [
     'Translator',
-    'Morse'
+    'Morse',
+    'LiberPrimusToEnglish',
+    'LiberPrimusToPrimes'
 ]
