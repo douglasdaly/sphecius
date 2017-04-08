@@ -11,12 +11,15 @@ Created on Sat Jan  7 22:17:38 2017
 from .. import string_helpers as sh
 from .base import Cipher
 
+
 #
-#   Class
+#   Class Definition
 #
 
 class Vigenere(Cipher):
-    """Vigenere Cipher Class"""
+    """
+    Vigenere Cipher Class
+    """
     
     def __init__(self, alphabet, initial_shift=0):
         """Default Constructor"""
@@ -24,8 +27,9 @@ class Vigenere(Cipher):
         cryptors = self.__build_cryptors(alphabet, initial_shift)
         self.__encryptor = cryptors[0]
         self.__decryptor = cryptors[1]
-    
-    def __build_cryptors(self, alphabet, initial_shift=0):
+
+    @staticmethod
+    def __build_cryptors(alphabet, initial_shift=0):
         """Builds the Encryption Lookup Table"""
         len_alphabet = len(alphabet)
         
@@ -43,7 +47,7 @@ class Vigenere(Cipher):
             
         return cipher_table, decipher_table
 
-    def encrypt(self, plaintext, key):
+    def encrypt(self, plaintext):
         """Encrypts the given string using the given key and the set alphabet"""
         if type(plaintext) == list:
             plaintext = sh.list_to_string(plaintext)

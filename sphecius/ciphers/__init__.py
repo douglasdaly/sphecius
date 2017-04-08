@@ -10,8 +10,8 @@ from .hill import Hill
 #   All Modules Setup
 #
 __all__ = [
-    'base',
-    'caesar',
-    'vigenere',
-    'hill'
+    'Cipher',
+    'Caesar',
+    'Vigenere',
+    'Hill'
 ]
