@@ -46,6 +46,7 @@ def ngram_index_of_coincidence(text, gram_length):
 
     return num / denom
 
+
 def get_ngram_frequencies(text, gram_length, strip_punctuation=True):
     """Gets a Dictionary of N-Gram to Count from a given Text
 
