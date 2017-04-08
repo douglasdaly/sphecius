@@ -1,8 +1,12 @@
 # -*- coding: utf-8 -*-
 """
-Created on Sat Jan  21 11:21:00 2017
+ngram.py
 
-@author: doug
+    Class for NGram Analysis
+
+@author: Doug Daly
+@date: 1/11/2017
+
 """
 
 #
