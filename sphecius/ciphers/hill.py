@@ -54,6 +54,7 @@ class Hill(Cipher):
 
         """
         # - Clean the Text
+        o_text = text
         text = sh.remove_punctuation(text)
 
         # - Get Parameters Needed
@@ -69,7 +70,7 @@ class Hill(Cipher):
         text_mat = v_i2a(enc_mat)
         ret = sh.convert_matrix_to_text_2d(text_mat, axis=1)
 
-        return sh.replace_stripped_text(text, ret)
+        return sh.replace_stripped_text(o_text, ret)
 
     def __get_finite_inverse(self, key):
         """Gets the Inverse of the given Key over a Finite Set
@@ -106,10 +107,10 @@ class Hill(Cipher):
                 return False
 
         # - Check Even/Odd Criteria
-        for iAx in range(2):
-            t = np.sum(key % 2, axis=iAx)
-            if not((t > 0).all() and (t < sz_tup[iAx]).all()):
-                return False
+        #for iAx in range(2):
+        #    t = np.sum(key % 2, axis=iAx)
+        #    if not ((t > 0).all() and (t < sz_tup[iAx]).all()):
+        #        return False
 
         # - Check that Inverse Exists
         if self.__get_finite_inverse(key) is not None:
