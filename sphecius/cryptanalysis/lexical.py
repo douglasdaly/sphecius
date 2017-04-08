@@ -20,23 +20,26 @@ class Lexical(object):
     """Lexical analysis of text"""
 
     @staticmethod
-    def index_of_coincidence(text):
-        """Gets the IOC of the given Text
+    def index_of_coincidence(text, strip_punctuation=True):
+        """Gets the IoC of the given Text
 
-        :param str text: Text to get IOC over
+        :param str text: Text to get IoC for
+        :param bool strip_punctuation: Should punctuation be stripped from the given text
 
-        :return: Dictionary of Character of Alphabet to Index of Coincidence
-        :rtype: dict
+        :return: Index of Coincidence of the given text
+        :rtype: float
 
         """
-        strip_text = string_helpers.remove_punctuation(text).replace(' ', '')
-        dict_freqs = Lexical.get_character_frequencies(text=strip_text, strip_punctuation=False)
+        if strip_punctuation:
+            text = string_helpers.remove_punctuation(text).replace(' ', '')
+        dict_freqs = Lexical.get_character_frequencies(text=text, strip_punctuation=False)
+
+        denom = len(text) * (len(text) - 1)
         num = 0.
-        denom = len(strip_text) * (len(strip_text)-1)
         for ch in dict_freqs.keys():
             num += dict_freqs[ch] * (dict_freqs[ch]-1)
-        return num / denom
 
+        return num / denom
 
     @staticmethod
     def get_character_frequencies(text, strip_punctuation=True):
