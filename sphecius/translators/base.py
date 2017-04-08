@@ -23,40 +23,12 @@ class Translator(object):
 
     def __init__(self):
         """Default Constructor"""
-        self._to_dict = self._generate_to_dict()
-        self._from_dict = self._generate_from_dict()
+        self._translate_dict = self._generate_translation_dict()
 
-    def translate_to(self, text):
-        """Translates the given Text
-
-        Translates the given text, in the 'From' Alphabet to the 'To' Alphabet.
-
-        :param str text: Text to translate
-
-        :return: Translated text
-        :rtype: str
-
-        """
-        return self.__translate(text, self._to_dict)
-
-    def translate_from(self, text):
-        """Translates the given Text
-
-        Translates the given text, in the 'To' Alphabet to the 'From' Alphabet.
-
-        :param str text: Text to translate
-
-        :return: Translated text
-        :rtype: str
-
-        """
-        return self.__translate(text, self._from_dict)
-
-    def __translate(self, text, translation_dict):
+    def translate(self, text):
         """Function which does the Translation
 
         :param str text: Text to Translate
-        :param dict translation_dict: Dictionary to use for Translation
 
         :return: Translated String
         :rtype: str
@@ -64,24 +36,15 @@ class Translator(object):
         """
         ret = ''
         for ch in text:
-            if ch in translation_dict.keys():
-                ret += translation_dict[ch]
+            if ch in self._translate_dict.keys():
+                ret += self._translate_dict[ch]
             else:
                 ret += ch
 
         return ret
 
-    def _generate_to_dict(self):
-        """Generates the Translate To Dictionary
-
-        :return: Dictionary of Character to Character Translation
-        :rtype: dict
-
-        """
-        raise NotImplementedError()
-
-    def _generate_from_dict(self):
-        """Generates the Translate From Dictionary
+    def _generate_translation_dict(self):
+        """Generates the Translation Dictionary
 
         :return: Dictionary of Character to Character Translation
         :rtype: dict
