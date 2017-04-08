@@ -90,8 +90,9 @@ def replace_stripped_text(original_text, stripped_text, chars_stripped=string.pu
             if original_text[i_o] == '.':
                 ret += ' '
         else:
-            ret += stripped_text[i_s]
-            i_s += 1
+            if i_s < len(stripped_text):
+                ret += stripped_text[i_s]
+                i_s += 1
 
     return ret
 
@@ -156,6 +157,6 @@ def convert_matrix_to_text_2d(matrix, axis=0):
         if axis == 0:
             ret += ''.join(matrix[i, :].tolist()[0])
         else:
-            ret += ''.join(matrix[:, i].tolist()[0])
+            ret += ''.join(matrix[:, i].transpose().tolist()[0])
 
     return ret
