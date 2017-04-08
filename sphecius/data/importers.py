@@ -18,10 +18,10 @@ importers.py
 #   Functions
 #
 
-def load_text_from_file(Filename, section_divider='#', line_ender='\n', skip_lines_starting_with=None):
+def load_text_from_file(filename, section_divider='#', line_ender='\n', skip_lines_starting_with=None):
     """Load text from File
 
-    :param str Filename: Path to the File to import
+    :param str filename: Path to the File to import
     :param str section_divider: Character used to denote page/section dividers (default is '#')
     :param str line_ender: Character used to denote line endings (if None lines are concatenated, default is '\n')
     :param list skip_lines_starting_with: Skip any lines starting with a character in the given list (default is None)
@@ -35,7 +35,25 @@ def load_text_from_file(Filename, section_divider='#', line_ender='\n', skip_lin
     curr_section_idx = 0
     curr_line_idx = 0
     dict_ret[curr_section_idx] = dict()
+    dict_ret[curr_section_idx][curr_line_idx] = ''
 
-    with open(Filename, 'r') as fin:
+    with open(filename, 'r') as fin:
         for line in fin:
-            
+            if line[0] in skip_lines_starting_with:
+                continue
+
+            if line[0] == section_divider:
+                curr_section_idx += 1
+                continue
+
+            if line_ender != '\n':
+                tLine = line[:-1]
+            else:
+                tLine = line
+
+            dict_ret[curr_section_idx][curr_line_idx] += tLine
+
+            if tLine[-1] == line_ender:
+                curr_line_idx += 1
+
+    return dict_ret
