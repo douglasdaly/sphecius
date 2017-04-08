@@ -36,6 +36,7 @@ def index_of_coincidence(text, strip_punctuation=True):
 
     return num / denom
 
+
 def get_character_frequencies(text, strip_punctuation=True):
     """Gets a Dictionary of Character and Count from the given Text
 
@@ -57,6 +58,7 @@ def get_character_frequencies(text, strip_punctuation=True):
         d_ret[c_char] += 1
 
     return d_ret
+
 
 def get_character_probabilities(text, strip_punctuation=True):
     """Gets a Dictionary of Character and Probability from the given Text
