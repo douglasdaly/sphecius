@@ -2,8 +2,12 @@
 #   Imports
 #
 from .ngram import NGram
-from .character import character
+from .lexical import Lexical
 
 #
 #   All Imports
 #
+__all__ = [
+    'NGram',
+    'Lexical'
+]

@@ -9,13 +9,38 @@ Created on Sat Jan  21 11:21:00 2017
 #   Imports
 #
 from .. import string_helpers
+from ..alphabets import Alphabet
+
 
 #
 #   Class
 #
 
-class character(object):
-    """Lexical analysis of text functions"""
+class Lexical(object):
+    """Lexical analysis of text"""
+
+    def __init__(self, alphabet):
+        """Default Constructor
+
+        :param Alphabet alphabet: Alphabet to do Analysis over
+
+        """
+        self._alphabet = alphabet
+
+    def index_of_coincidence(self, text):
+        """Gets the IOC of the given Text
+
+        :param str text: Text to get IOC over
+
+        :return: Dictionary of Character of Alphabet to Index of Coincidence
+        :rtype: dict
+
+        """
+        dict_probs = Character.get_character_probabilities(text=text, strip_punctuation=True)
+        for ch in self._alphabet.get_alphabet_list():
+            if ch not in dict_probs.keys():
+                dict_probs[ch] = 0.
+        return dict_probs
 
     @staticmethod
     def get_character_frequencies(text, strip_punctuation=True):
