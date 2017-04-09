@@ -31,19 +31,19 @@ class Vigenere(Cipher):
     @staticmethod
     def __build_cryptors(alphabet, initial_shift=0):
         """Builds the Encryption Lookup Table"""
-        len_alphabet = len(alphabet)
+        len_alphabet = len(alphabet.get_alphabet())
         
         cipher_table = dict()
         decipher_table = dict()
         for i in range(len_alphabet):
-            c_letter = alphabet[i]
-            c_alphabet = sh.shift_backward(alphabet, (i+initial_shift) % len_alphabet)
+            c_letter = alphabet.i2a(i+1)
+            c_alphabet = sh.shift_backward(alphabet.get_alphabet(), (i+initial_shift) % len_alphabet)
 
             cipher_table[c_letter] = dict()
-            cipher_table[c_letter] = dict()
+            decipher_table[c_letter] = dict()
             for j in range(len_alphabet):
-                cipher_table[c_letter][alphabet[j]] = c_alphabet[j]
-                decipher_table[c_letter][c_alphabet[j]] = alphabet[j]
+                cipher_table[c_letter][alphabet.i2a(j+1)] = c_alphabet[j]
+                decipher_table[c_letter][c_alphabet[j]] = alphabet.i2a(j+1)
             
         return cipher_table, decipher_table
 
@@ -62,7 +62,7 @@ class Vigenere(Cipher):
             k_let = key[i % len_key]
             c_let = self.__encryptor[s_let][k_let]
             output.append(c_let)
-        
+
         return sh.list_to_string(output)
     
     def decrypt(self, ciphertext):
