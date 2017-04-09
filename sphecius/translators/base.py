@@ -25,7 +25,7 @@ class Translator(object):
         """Default Constructor"""
         self._translate_dict = self._generate_translation_dict()
 
-    def translate_text(self, text):
+    def translate(self, text):
         """Function which does the Translation
 
         :param str text: Text to Translate
