@@ -1,8 +1,11 @@
 # -*- coding: utf-8 -*-
 """
-Created on Sat Jan  7 22:17:38 2017
+vigenere.py
 
-@author: doug
+    Vigenere Cipher Class
+
+@author: Doug Daly
+@date: 3/7/2017
 """
 
 #

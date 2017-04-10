@@ -1,8 +1,11 @@
 # -*- coding: utf-8 -*-
 """
-Created on Sat Jan  7 22:19:59 2017
+hill.py
 
-@author: doug
+    Hill Cipher Class
+
+@author: Doug Daly
+@date: 3/7/2017
 """
 
 #
