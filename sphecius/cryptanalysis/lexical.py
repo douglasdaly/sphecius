@@ -161,3 +161,29 @@ def measure_of_roughness(text, alphabet):
             mr += (-(1/alphabet.size()))**2
 
     return mr
+
+
+def chi_squared_statistic(text, dict_expected_probabilities):
+    """Gets the Chi-Squared Statistic for the Given Text and Expected Probability Distribution
+
+    :param str text: Text to get Chi-Squared Statistic for
+    :param dict dict_expected_probabilities: Dictionary of Letter to Expected Probability
+
+    :return: Chi-Squared Statistic for the given Text
+    :rtype: float
+
+    """
+    text = string_helpers.remove_punctuation(text)
+    d_freqs = get_ngram_frequencies(text, False)
+    n_text = len(text)
+    cs = 0.
+    for ch in dict_expected_probabilities.keys():
+        exp_cnt = dict_expected_probabilities[ch] * n_text
+        if ch in d_probs.keys():
+            num = (d_freqs[ch] - exp_cnt)**2
+        else:
+            num = (-exp_cnt)**2
+
+        cs += num / exp_cnt
+
+    return cs
