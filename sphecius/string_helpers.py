@@ -13,14 +13,15 @@ import numpy as np
 
 from .alphabets import Alphabet
 
+
 #
 #   Functions
 #
 
-def string_to_list(text, seperator=' '):
-    """Converts a string to a list of 'letters' using the (optional) seperator"""
+def string_to_list(text, separator=' '):
+    """Converts a string to a list of 'letters' using the (optional) separator"""
 
-    return text.split(seperator)
+    return text.split(separator)
 
 
 def list_to_string(text):
@@ -175,5 +176,22 @@ def strip_non_alphabet_characters(text, alphabet2use):
     for ch in text:
         if ch in alpha:
             ret += ch
+
+    return ret
+
+
+def get_coset_strings(text, coset_length):
+    """Returns a list of Coset Strings using the length Given
+
+    :param str text: Text to get cosets of
+    :param int coset_length: Length of coset to use (every Nth letter)
+
+    :return: List of sub-string cosets
+    :rtype: list
+
+    """
+    ret = list()
+    for i in range(coset_length):
+        ret.append(text[i:len(text):coset_length])
 
     return ret
