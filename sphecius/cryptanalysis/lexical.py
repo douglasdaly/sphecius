@@ -9,7 +9,7 @@ Created on Sat Jan  21 11:21:00 2017
 #   Imports
 #
 from .. import string_helpers
-
+from ..alphabets import Alphabet
 
 #
 #   Functions
@@ -25,6 +25,19 @@ def index_of_coincidence(text):
 
     """
     return ngram_index_of_coincidence(text, 1)
+
+
+def index_of_coincidence_normalized(text, alphabet):
+    """Gets the Normalized IoC of the given Text
+
+    :param str text: Text to get IoC for
+    :param Alphabet alphabet: Alphabet to normalize to
+
+    :return: Normalized IoC Value
+    :rtype: float
+
+    """
+    return index_of_coincidence(text) * alphabet.size()
 
 
 def ngram_index_of_coincidence(text, gram_length):
@@ -127,3 +140,24 @@ def __convert_frequency_dict_to_rates(freq_dict):
         freq_dict[k] /= n_tot
 
     return freq_dict
+
+
+def measure_of_roughness(text, alphabet):
+    """Gets the Measure of Roughness for the given Text and Alphabet Length
+
+    :param str text: Text to get MR for
+    :param Alphabet alphabet: Alphabet to calculate MR for
+
+    :return: Measure of Roughness for  the given Text and Alphabet Length
+    :rtype: float
+
+    """
+    d_probs = get_character_probabilities(text, True)
+    mr = 0.
+    for letter in alphabet.get_alphabet_list():
+        if letter in d_probs.keys():
+            mr += (d_probs[letter] - (1/alphabet.size()))**2
+        else:
+            mr += (-(1/alphabet.size()))**2
+
+    return mr
