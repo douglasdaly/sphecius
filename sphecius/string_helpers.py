@@ -11,10 +11,7 @@ Created on Mon Jan  9 19:07:09 2017
 import string
 import numpy as np
 
-#
-#   Variables
-#
-
+from .alphabets import Alphabet
 
 #
 #   Functions
@@ -158,5 +155,24 @@ def convert_matrix_to_text_2d(matrix, axis=0):
             ret += ''.join(matrix[i, :].tolist()[0])
         else:
             ret += ''.join(matrix[:, i].transpose().tolist()[0])
+
+    return ret
+
+def strip_non_alphabet_characters(text, alphabet2use):
+    """Strips any Non-Alphabet Characters from the given Text
+
+    :param str text: Text to strip
+    :param Alphabet alphabet2use: Alphabet to use
+
+    :return: Stripped String
+    :rtype: str
+
+    """
+    alpha = alphabet2use.get_alphabet().upper()
+    ret = ''
+    text = text.upper()
+    for ch in text:
+        if ch in alpha:
+            ret += ch
 
     return ret
