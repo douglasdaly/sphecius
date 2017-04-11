@@ -158,6 +158,7 @@ def convert_matrix_to_text_2d(matrix, axis=0):
 
     return ret
 
+
 def strip_non_alphabet_characters(text, alphabet2use):
     """Strips any Non-Alphabet Characters from the given Text
 
