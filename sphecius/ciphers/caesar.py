@@ -29,12 +29,12 @@ class Caesar(Cipher):
         self._shift = shift
 
         if shift > 0:
-            self.__shifted = sh.shift_forward(self._alphabet, shift)
+            self.__shifted = sh.shift_forward(self._alphabet.get_alphabet(), shift)
         else:
-            self.__shifted = sh.shift_backward(self._alphabet, -shift)
+            self.__shifted = sh.shift_backward(self._alphabet.get_alphabet(), -shift)
 
-        self.__encryptor = dict(zip(self._alphabet, self.__shifted))
-        self.__decryptor = dict(zip(self.__shifted, self._alphabet))
+        self.__encryptor = dict(zip(self._alphabet.get_alphabet(), self.__shifted))
+        self.__decryptor = dict(zip(self.__shifted, self._alphabet.get_alphabet()))
 
     def encrypt(self, plaintext):
         """Encrypts the given plaintext based on the set parameters of this class"""
