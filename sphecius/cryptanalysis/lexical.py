@@ -179,7 +179,7 @@ def chi_squared_statistic(text, dict_expected_probabilities):
     cs = 0.
     for ch in dict_expected_probabilities.keys():
         exp_cnt = dict_expected_probabilities[ch] * n_text
-        if ch in d_probs.keys():
+        if ch in d_freqs.keys():
             num = (d_freqs[ch] - exp_cnt)**2
         else:
             num = (-exp_cnt)**2
