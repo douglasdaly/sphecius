@@ -51,7 +51,10 @@ class Vigenere(Cipher):
         return cipher_table, decipher_table
 
     def encrypt(self, plaintext):
-        """Encrypts the given string using the given key and the set alphabet"""
+        """Encrypts the given string"""
+        if self._key is None:
+            raise Exception("No valid key set!")
+
         if type(plaintext) == list:
             plaintext = sh.list_to_string(plaintext)
 
@@ -69,7 +72,10 @@ class Vigenere(Cipher):
         return sh.list_to_string(output)
     
     def decrypt(self, ciphertext):
-        """Decrypts the given Cipher Text with the given Key"""
+        """Decrypts the given Cipher Text"""
+        if self._key is None:
+            raise Exception("No valid key set!")
+
         if type(ciphertext) == list:
             ciphertext = sh.list_to_string(ciphertext)
         

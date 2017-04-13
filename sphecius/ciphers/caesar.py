@@ -19,14 +19,25 @@ from .base import Cipher
 class Caesar(Cipher):
     """Caesar Cipher Class"""
     
-    def __init__(self, alphabet, shift):
+    def __init__(self, alphabet, shift=None):
         """Default Constructor"""
         super(Caesar, self).__init__(alphabet=alphabet)
-        self._set_shift(shift)
+        self.set_key(shift)
+
+    def set_key(self, key):
+        """Sets the Key for this Caesar Cipher
+
+        :param int key: Shift Amount for Caesar Cipher
+
+        """
+        if key is not None:
+            self._set_shift(key)
+        else:
+            self._key = None
 
     def _set_shift(self, shift):
         """Sets the shift for this Caesar cipher"""
-        self._shift = shift
+        self._key = shift
 
         if shift > 0:
             self.__shifted = sh.shift_forward(self._alphabet.get_alphabet(), shift)
@@ -38,6 +49,9 @@ class Caesar(Cipher):
 
     def encrypt(self, plaintext):
         """Encrypts the given plaintext based on the set parameters of this class"""
+        if self._key is None:
+            raise Exception("No valid key set!")
+
         plaintext = plaintext.upper()
         
         output = list()
@@ -51,6 +65,9 @@ class Caesar(Cipher):
 
     def decrypt(self, ciphertext):
         """Decrypts the given Ciphertext based on the set parameters of this class"""
+        if self._key is None:
+            raise Exception("No valid key set!")
+
         ciphertext = ciphertext.upper()
         
         output = list()

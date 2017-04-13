@@ -25,13 +25,17 @@ import sympy
 class Hill(Cipher):
     """Hill Cipher Class"""
 
-    def __init__(self, alphabet, key_matrix):
+    def __init__(self, alphabet, key_matrix=None):
         """Default Constructor"""
         super(Hill, self).__init__(alphabet=alphabet)
         self.set_key(key=key_matrix)
 
     def set_key(self, key):
         """Sets the Key Matrix for this Cipher"""
+        if key is None:
+            self._key = None
+            return
+
         if self.__valid_hill_key(key):
             self._key = key
         else:
@@ -39,12 +43,18 @@ class Hill(Cipher):
 
     def encrypt(self, plaintext, padding=None):
         """Hill Cipher Encryption"""
-        return self.__run_algorithm(plaintext, self._key, padding=padding)
+        if self._key is not None:
+            return self.__run_algorithm(plaintext, self._key, padding=padding)
+        else:
+            raise Exception("No valid key set!")
 
     def decrypt(self, ciphertext):
         """Hill Cipher Decryption"""
-        decrypt_key = self.__get_finite_inverse(self._key)
-        return self.__run_algorithm(ciphertext, decrypt_key)
+        if self._key is not None:
+            decrypt_key = self.__get_finite_inverse(self._key)
+            return self.__run_algorithm(ciphertext, decrypt_key)
+        else:
+            raise Exception("No valid key set!")
 
     def __run_algorithm(self, text, key, padding=None):
         """Helper function to run Hill algorithm
