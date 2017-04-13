@@ -2,12 +2,12 @@
 #   Imports
 #
 from .ngram import NGram
-from . import lexical
+from .lexical import *
 
 #
 #   All Imports
 #
 __all__ = [
     'NGram',
-    'lexical'
+    'lexical.*'
 ]
