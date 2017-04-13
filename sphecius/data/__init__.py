@@ -1,7 +1,7 @@
 #
 #   Imports
 #
-from . import importers
+from .importers import *
 
 
 #
