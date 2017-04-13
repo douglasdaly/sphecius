@@ -1,8 +1,11 @@
 # -*- coding: utf-8 -*-
 """
-Created on Sat Jan  21 11:21:00 2017
+lexical.py
 
-@author: Douglas James Daly Jr.
+    Lexical Cryptanalysis Functions
+
+@author: Doug Daly
+@date: 1/21/2017
 """
 
 #
