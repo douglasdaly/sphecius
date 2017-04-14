@@ -3,6 +3,7 @@
 #
 from .ngram import NGram
 from .lexical import *
+from . import vigenere
 
 #
 #   All Imports
