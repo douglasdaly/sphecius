@@ -10,5 +10,6 @@ from . import vigenere
 #
 __all__ = [
     'NGram',
-    'lexical.*'
+    'lexical.*',
+    'vigenere'
 ]

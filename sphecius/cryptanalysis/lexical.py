@@ -14,6 +14,7 @@ lexical.py
 from .. import string_helpers
 from ..alphabets import Alphabet
 
+
 #
 #   Functions
 #
