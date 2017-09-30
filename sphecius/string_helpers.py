@@ -1,10 +1,12 @@
 # -*- coding: utf-8 -*-
 """
-Created on Mon Jan  9 19:07:09 2017
+string_helpers.py
 
-@author: doug
+    Commonly used string manipulation functions
+
+@author: Douglas Daly
+@date: 1/9/2017
 """
-
 #
 #   Imports
 #
@@ -19,14 +21,27 @@ from .alphabets import Alphabet
 #
 
 def string_to_list(text, separator=' '):
-    """Converts a string to a list of 'letters' using the (optional) separator"""
+    """ Converts a string to a list of 'letters' using the (optional) separator
 
+    :param str text: Text to split
+    :param str seperator: [Optional] Separator to split string by (defaults to a space)
+
+    :return: List of split string elements
+    :rtype: list
+
+    """
     return text.split(separator)
 
 
 def list_to_string(text):
-    """Converts a list of 'letters' to a contiguous String"""
-    
+    """ Converts a list of 'letters' to a contiguous String
+
+    :param list text: Text split into elements in a list
+
+    :return: Single string of the concatenated given list
+    :rtype: str
+
+    """
     output = ''
     for letter in text:
         output += letter
@@ -35,8 +50,15 @@ def list_to_string(text):
 
 
 def shift_forward(text, spaces):
-    """Shifts the given string or list the given number of spaces forward"""
-    
+    """ Shifts the given string or list the given number of spaces forward
+
+    :param str text: Text to shift
+    :param int spaces: Number of spaces to shift the text forward by
+
+    :return: Forward-shifted string
+    :rtype: str
+
+    """
     output = text[-spaces::]
     if type(text) == str:
         output += text[:len(text)-spaces:]
@@ -49,8 +71,15 @@ def shift_forward(text, spaces):
 
 
 def shift_backward(text, spaces):
-    """Shifts the given string or list the given number of spaces backward"""
-    
+    """ Shifts the given string or list the given number of spaces backward
+
+    :param str text: Text to shift
+    :param int spaces: Number of spaces to shift the text backwards by
+
+    :return: Backward-shifted string
+    :rtype: str
+
+    """
     output = text[spaces::]
     if type(text) == str:
         output += text[:spaces:]
@@ -63,14 +92,20 @@ def shift_backward(text, spaces):
 
 
 def remove_punctuation(text):
-    """Removes all punctuation from the given string"""
+    """ Removes all punctuation from the given string
 
+    :param str text: Removes all punctuation from the given text
+
+    :return: Punctuation-removed string
+    :rtype: str
+
+    """
     translator = str.maketrans('', '', string.punctuation)
     return text.translate(translator)
 
 
 def replace_stripped_text(original_text, stripped_text, chars_stripped=string.punctuation):
-    """Inserts punctuation back into stripped string
+    """ Inserts punctuation back into stripped string
 
     :param str original_text: Original text with punctuation
     :param str stripped_text: Text stripped of punctuation to put punctuation back in
@@ -96,7 +131,7 @@ def replace_stripped_text(original_text, stripped_text, chars_stripped=string.pu
 
 
 def convert_text_to_matrix_2d(text, axis_size, axis=0, padding=None):
-    """Converts the given Text to a Matrix
+    """ Converts the given Text to a Matrix
 
     Converts the given text a matrix with the given row length and optionally pads
     the last column with the given string.
@@ -139,7 +174,7 @@ def convert_text_to_matrix_2d(text, axis_size, axis=0, padding=None):
 
 
 def convert_matrix_to_text_2d(matrix, axis=0):
-    """Converts a text Matrix back to String
+    """ Converts a text Matrix back to String
 
     Given a text matrix, convert it back into a single string.
 
@@ -161,7 +196,7 @@ def convert_matrix_to_text_2d(matrix, axis=0):
 
 
 def strip_non_alphabet_characters(text, alphabet2use):
-    """Strips any Non-Alphabet Characters from the given Text
+    """ Strips any Non-Alphabet Characters from the given Text
 
     :param str text: Text to strip
     :param Alphabet alphabet2use: Alphabet to use
@@ -181,7 +216,7 @@ def strip_non_alphabet_characters(text, alphabet2use):
 
 
 def get_coset_strings(text, coset_length):
-    """Returns a list of Coset Strings using the length Given
+    """ Returns a list of Coset Strings using the length Given
 
     :param str text: Text to get cosets of
     :param int coset_length: Length of coset to use (every Nth letter)

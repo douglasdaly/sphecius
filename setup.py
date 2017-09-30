@@ -1,12 +1,11 @@
 """
-Setup.py
+setup.py
 
     Setup file for Sphecius package.
 
-@author: Douglas James Daly Jr.
+@author: Douglas Daly
 @date: 4/6/2017
 """
-
 #
 #   Imports
 #
@@ -17,6 +16,7 @@ from distutils.core import setup
 #
 #   Functions
 #
+
 def read(filename):
     """Read the contents of a file"""
     return open(os.path.join(os.path.dirname(__file__), filename)).read()

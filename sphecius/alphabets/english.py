@@ -20,7 +20,9 @@ from .base import Alphabet
 #
 
 class English(Alphabet):
-    """Plain English Letter Class"""
+    """
+    Plain English Letter Class
+    """
     
     def __init__(self):
         """ Default Constructor
