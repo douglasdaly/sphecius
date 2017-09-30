@@ -4,10 +4,9 @@ lexical.py
 
     Lexical Cryptanalysis Functions
 
-@author: Doug Daly
+@author: Douglas Daly
 @date: 1/21/2017
 """
-
 #
 #   Imports
 #
@@ -20,7 +19,7 @@ from ..alphabets import Alphabet
 #
 
 def index_of_coincidence(text):
-    """Gets the IoC of the given Text
+    """ Gets the IoC of the given Text
 
     :param str text: Text to get IoC for
 
@@ -45,7 +44,7 @@ def index_of_coincidence_normalized(text, alphabet):
 
 
 def ngram_index_of_coincidence(text, gram_length):
-    """Gets the IoC of NGrams of the given Text
+    """ Gets the IoC of NGrams of the given Text
 
     :param str text: Text to get NGram IoC for
     :param int gram_length: Length of NGram to get IoC for
@@ -65,7 +64,7 @@ def ngram_index_of_coincidence(text, gram_length):
 
 
 def get_ngram_frequencies(text, gram_length, strip_punctuation=True):
-    """Gets a Dictionary of N-Gram to Count from a given Text
+    """ Gets a Dictionary of N-Gram to Count from a given Text
 
     :param str text: Text to get NGram Frequencies from
     :param int gram_length: Length of the NGram to get
@@ -89,7 +88,7 @@ def get_ngram_frequencies(text, gram_length, strip_punctuation=True):
 
 
 def get_ngram_probabilities(text, gram_length, strip_punctuation=True):
-    """Gets a Dictionary of N-Gram to Count from a given Text
+    """ Gets a Dictionary of N-Gram to Count from a given Text
 
     :param str text: Text to get NGram Frequencies from
     :param int gram_length: Length of the NGram to get
@@ -104,7 +103,7 @@ def get_ngram_probabilities(text, gram_length, strip_punctuation=True):
 
 
 def get_character_frequencies(text, strip_punctuation=True):
-    """Gets a Dictionary of Character and Count from the given Text
+    """ Gets a Dictionary of Character and Count from the given Text
 
     :param str text: Text to Count Character occurrences in
     :param bool strip_punctuation: [Optional] Strips punctuation from text (default is True)
@@ -117,7 +116,7 @@ def get_character_frequencies(text, strip_punctuation=True):
 
 
 def get_character_probabilities(text, strip_punctuation=True):
-    """Gets a Dictionary of Character and Probability from the given Text
+    """ Gets a Dictionary of Character and Probability from the given Text
 
     :param str text: Text to Count Character occurrences in
     :param bool strip_punctuation: [Optional] Strips punctuation from text (default is True)
@@ -131,7 +130,7 @@ def get_character_probabilities(text, strip_punctuation=True):
 
 
 def __convert_frequency_dict_to_rates(freq_dict):
-    """Converts a Frequency Dictionary to a Probability Dictionary
+    """ Converts a Frequency Dictionary to a Probability Dictionary
 
     :param dict freq_dict: Dictionary of Frequencies of Occurrence
 
@@ -147,7 +146,7 @@ def __convert_frequency_dict_to_rates(freq_dict):
 
 
 def measure_of_roughness(text, alphabet):
-    """Gets the Measure of Roughness for the given Text and Alphabet Length
+    """ Gets the Measure of Roughness for the given Text and Alphabet Length
 
     :param str text: Text to get MR for
     :param Alphabet alphabet: Alphabet to calculate MR for
@@ -168,7 +167,7 @@ def measure_of_roughness(text, alphabet):
 
 
 def chi_squared_statistic(text, dict_expected_probabilities):
-    """Gets the Chi-Squared Statistic for the Given Text and Expected Probability Distribution
+    """ Gets the Chi-Squared Statistic for the Given Text and Expected Probability Distribution
 
     :param str text: Text to get Chi-Squared Statistic for
     :param dict dict_expected_probabilities: Dictionary of Letter to Expected Probability

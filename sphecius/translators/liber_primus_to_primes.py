@@ -7,7 +7,6 @@ liber_primus_to_primes.py
 @author: Doug Daly
 @date: 4/8/2017
 """
-
 #
 #   Imports
 #
@@ -24,7 +23,7 @@ class LiberPrimusToPrimes(Translator):
     """
 
     def _generate_translation_dict(self):
-        """Generates the Translation Dictionary Needed
+        """ Generates the Translation Dictionary Needed
 
         :return: Translation Dictionary
         :rtype: dict

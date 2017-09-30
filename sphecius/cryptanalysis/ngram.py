@@ -4,11 +4,9 @@ ngram.py
 
     Class for NGram Analysis
 
-@author: Doug Daly
+@author: Douglas Daly
 @date: 1/11/2017
-
 """
-
 #
 #   Imports
 #
@@ -20,29 +18,37 @@ from .. import string_helpers
 #
 #   Variables
 #
-ngram_base_dir = "../resources/ngrams/"
+_ngram_base_dir = "../resources/ngrams/"
+
 
 #
 #   Class
 #
 
 class NGram(object):
-    """N-Gram class for Text Analysis"""
+    """
+    N-Gram class for Text Analysis
+    """
 
     def __init__(self, n, language='english'):
-        """Default Constructor"""
+        """ Default Constructor
+        """
         filename = language + "_" + str(n) + "grams.txt"
 
         # - Throw Exception if no resource file for this
-        if not os.path.isfile(ngram_base_dir + filename):
+        if not os.path.isfile(_ngram_base_dir + filename):
             raise Exception("No N-Gram Resource File for N=" + str(n) + " and lang=" + language + " exists.")
 
         self.__n = n
-        self.__gram_dict = self.__load_grams_from_file(ngram_base_dir + filename)
+        self.__gram_dict = self.__load_grams_from_file(_ngram_base_dir + filename)
 
     @staticmethod
     def __load_grams_from_file(filepath):
-        """Loads the N-Gram Dict from File"""
+        """ Loads the N-Gram Dict from File
+
+        :param str filepath: Filepath to load the N-Gram Dict from
+
+        """
         occurrences = dict()
         run_tot = 0.0
 
@@ -62,7 +68,14 @@ class NGram(object):
         return output
 
     def get_single_word_occurrences(self, word):
-        """Gets occurrences of this N-Gram from the given Word"""
+        """ Gets occurrences of this N-Gram from the given Word
+
+        :param str word: Word to get N-Gram occurrences for
+
+        :return: Dictionary of N-Gram to Count
+        :rtype: dict
+
+        """
         if len(word) < self.__n:
             return dict()
 
@@ -79,7 +92,14 @@ class NGram(object):
         return output
 
     def get_text_occurrences(self, text, remove_spaces=False):
-        """Gets occurrences of this N-Gram from the given Text"""
+        """ Gets occurrences of this N-Gram from the given Text
+
+        :param str text: Text to get N-Gram analysis for
+
+        :return: Dictionary of N-Gram to occurrence count
+        :rtype: dict
+
+        """
         # - First strip punctuation
         text = string_helpers.remove_punctuation(text).upper()
 
@@ -96,7 +116,14 @@ class NGram(object):
         return dict(rc)
 
     def convert_occurrences_to_sum_probabilities(self, occurrences):
-        """Converts the given Occurrence dictionary to the sum of the NGram probabilities"""
+        """ Converts the given Occurrence dictionary to the sum of the NGram probabilities
+
+        :param dict occurrences: N-Gram Occurrences count dictionary
+
+        :returns: Dictionary of N-Gram to sum of probability of N-Gram occurring
+        :rtype: dict
+
+        """
         output = dict()
         for (k, v) in occurrences.iteritems():
             output[k] = v * self.__gram_dict[k]
@@ -104,7 +131,15 @@ class NGram(object):
         return output
 
     def get_text_occurrence_rates(self, text, remove_spaces=False):
-        """Gets the occurrence rates for the given text"""
+        """ Gets the occurrence rates for the given text
+
+        :param str text: Text to get occurrence rates for
+        :param bool remove_spaces: [Optional] Whether or not to remove spaces during the N-Gram analysis
+
+        :return: Dictionary of N-Gram to percentage occurrence
+        :rtype: dict
+
+        """
         occurrences = self.get_text_occurrences(text, remove_spaces=remove_spaces)
 
         run_tot = 0.0
@@ -118,7 +153,14 @@ class NGram(object):
         return output
 
     def get_relative_occurrence_rates(self, occurrence_rates):
-        """Gets the relative occurrence rates given a Dictionary of Occurrence Rates"""
+        """ Gets the relative occurrence rates given a Dictionary of Occurrence Rates
+
+        :param dict occurrence_rates: Occurrence rates to get relative values for
+
+        :return: Dictionary of given occurrence rates normalized to 100 percent
+        :rtype: dict
+
+        """
         output = dict()
 
         run_tot = 0.0

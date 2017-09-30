@@ -17,7 +17,7 @@ from abc import ABCMeta, abstractmethod
 #   Class
 #
 
-class Alphabet(metaclass=ABCMeta):
+class Alphabet(object, metaclass=ABCMeta):
     """
     Base Alphabet Class
     """

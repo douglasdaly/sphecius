@@ -4,7 +4,7 @@ importers.py
 
     File with Functions to Import Data for Cryptanalysis
 
-@author: Doug Daly
+@author: Douglas Daly
 @date: 4/7/2017
 """
 
@@ -13,7 +13,7 @@ importers.py
 #
 
 def load_text_from_file(filename, section_divider='\n', line_ender='\n', skip_lines_starting_with=None):
-    """Load text from File
+    """ Load text from File
 
     :param str filename: Path to the File to import
     :param str section_divider: Character used to denote page/section dividers (default is '\n')

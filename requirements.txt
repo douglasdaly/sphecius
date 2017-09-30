@@ -1,0 +1,3 @@
+mpmath==0.19
+numpy==1.13.3
+sympy==1.1.1

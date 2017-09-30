@@ -1,10 +1,12 @@
 # -*- coding: utf-8 -*-
 """
-Created on Wed Jan 12 17:49:00 2017
+base.py
 
-@author: doug
+    Base Cipher Object class.
+
+@author: Douglas Daly
+@date: 1/12/2017
 """
-
 #
 #   Imports
 #
@@ -17,26 +19,45 @@ from ..alphabets import English
 #   Classes
 #
 
-class Cipher(metaclass=ABCMeta):
+class Cipher(object, metaclass=ABCMeta):
     """
     Base Cipher Class
     """
 
     def __init__(self, alphabet=English):
-        """Default/Abstract Constructor"""
+        """ Default Constructor
+        """
         self._alphabet = alphabet
         self._key = None
 
     def set_key(self, key):
-        """Sets the Key for this Cipher object"""
+        """ Sets the Key for this Cipher object
+
+        :param str key: Key for this Cipher object
+
+        """
         self._key = key.upper()
 
     @abstractmethod
     def encrypt(self, plaintext):
-        """Abstract Encrypt Method"""
+        """ Abstract Encrypt Method
+
+        :param str plaintext: Text to encrypt
+
+        :returns: Encrypted text
+        :rtype: str
+
+        """
         pass
 
     @abstractmethod
     def decrypt(self, ciphertext):
-        """Abstract Decrypt Method"""
+        """ Abstract Decrypt Method
+
+        :param str ciphertext: Text to decrypt
+
+        :returns: Decrypted text
+        :rtype: str
+
+        """
         pass

@@ -4,10 +4,9 @@ liber_primus_to_reverse_liber_primus.py
 
     Translator Class for LP Anglo Saxon Runic to Reversed LP
 
-@author: Doug Daly
+@author: Douglas Daly
 @date: 4/9/2017
 """
-
 #
 #   Imports
 #
@@ -24,7 +23,7 @@ class LiberPrimusToReverseLiberPrimus(Translator):
     """
 
     def _generate_translation_dict(self):
-        """Generates the Translation Dictionary Needed
+        """ Generates the Translation Dictionary Needed
 
         :return: Translation Dictionary
         :rtype: dict

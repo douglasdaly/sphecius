@@ -1,31 +1,36 @@
 # -*- coding: utf-8 -*-
 """
-Created on Sat Jan  7 22:19:59 2017
+caesar.py
 
-@author: doug
+    Caesar cipher class
+
+@author: Douglas Daly
+@date: 1/7/2017
 """
-
 #
 #   Imports
 #
 from .. import string_helpers as sh
 from .base import Cipher
 
+
 #
 #   Class
 #
 
-
 class Caesar(Cipher):
-    """Caesar Cipher Class"""
+    """
+    Caesar Cipher Class
+    """
     
     def __init__(self, alphabet, shift=None):
-        """Default Constructor"""
+        """ Default Constructor
+        """
         super(Caesar, self).__init__(alphabet=alphabet)
         self.set_key(shift)
 
     def set_key(self, key):
-        """Sets the Key for this Caesar Cipher
+        """ Sets the Key for this Caesar Cipher
 
         :param int key: Shift Amount for Caesar Cipher
 
@@ -36,7 +41,8 @@ class Caesar(Cipher):
             self._key = None
 
     def _set_shift(self, shift):
-        """Sets the shift for this Caesar cipher"""
+        """ Sets the shift for this Caesar cipher
+        """
         self._key = shift
 
         if shift > 0:
@@ -48,7 +54,8 @@ class Caesar(Cipher):
         self.__decryptor = dict(zip(self.__shifted, self._alphabet.get_alphabet()))
 
     def encrypt(self, plaintext):
-        """Encrypts the given plaintext based on the set parameters of this class"""
+        """ Encrypts the given plaintext based on the set parameters of this class
+        """
         if self._key is None:
             raise Exception("No valid key set!")
 
@@ -64,7 +71,8 @@ class Caesar(Cipher):
         return output
 
     def decrypt(self, ciphertext):
-        """Decrypts the given Ciphertext based on the set parameters of this class"""
+        """ Decrypts the given Ciphertext based on the set parameters of this class
+        """
         if self._key is None:
             raise Exception("No valid key set!")
 

@@ -4,18 +4,17 @@ hill.py
 
     Hill Cipher Class
 
-@author: Doug Daly
+@author: Douglas Daly
 @date: 3/7/2017
 """
-
 #
 #   Imports
 #
-from .. import string_helpers as sh
-from .base import Cipher
-
 import numpy as np
 import sympy
+
+from .. import string_helpers as sh
+from .base import Cipher
 
 
 #
@@ -23,15 +22,22 @@ import sympy
 #
 
 class Hill(Cipher):
-    """Hill Cipher Class"""
+    """
+    Hill Cipher Class
+    """
 
     def __init__(self, alphabet, key_matrix=None):
-        """Default Constructor"""
+        """ Default Constructor
+        """
         super(Hill, self).__init__(alphabet=alphabet)
         self.set_key(key=key_matrix)
 
     def set_key(self, key):
-        """Sets the Key Matrix for this Cipher"""
+        """ Sets the Key Matrix for this Cipher
+
+        :param np.matrix key: Matrix to use for key
+
+        """
         if key is None:
             self._key = None
             return
@@ -42,14 +48,29 @@ class Hill(Cipher):
             raise Exception('Invalid Key given!')
 
     def encrypt(self, plaintext, padding=None):
-        """Hill Cipher Encryption"""
+        """ Hill Cipher Encryption
+
+        :param str plaintext: Text to encrypt
+        :param str padding: [Optional] Text to use for padding (as needed)
+
+        :return: Encrypted text
+        :rtype: str
+
+        """
         if self._key is not None:
             return self.__run_algorithm(plaintext, self._key, padding=padding)
         else:
             raise Exception("No valid key set!")
 
     def decrypt(self, ciphertext):
-        """Hill Cipher Decryption"""
+        """ Hill Cipher Decryption
+
+        :param str ciphertext: Ciphertext to decrypt
+
+        :return: Decrypted ciphertext
+        :rtype: str
+
+        """
         if self._key is not None:
             decrypt_key = self.__get_finite_inverse(self._key)
             return self.__run_algorithm(ciphertext, decrypt_key)
@@ -57,10 +78,10 @@ class Hill(Cipher):
             raise Exception("No valid key set!")
 
     def __run_algorithm(self, text, key, padding=None):
-        """Helper function to run Hill algorithm
+        """ Helper function to run Hill algorithm
 
-        :param str text:
-        :param numpy.matrix key:
+        :param str text: Text to run through algorithm
+        :param numpy.matrix key: Key matrix to use
 
         :return: Resulting Text from Hill Algorithm
         :rtype: str
@@ -86,7 +107,7 @@ class Hill(Cipher):
         return sh.replace_stripped_text(o_text, ret)
 
     def __get_finite_inverse(self, key):
-        """Gets the Inverse of the given Key over a Finite Set
+        """ Gets the Inverse of the given Key over a Finite Set
 
         :param np.matrix key: Key Matrix to Invert
 
@@ -103,7 +124,7 @@ class Hill(Cipher):
             return None
 
     def __valid_hill_key(self, key):
-        """Checks if the given Key Matrix is valid
+        """ Checks if the given Key Matrix is valid
 
         :param numpy.matrix key: Key Matrix to Check
 

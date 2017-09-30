@@ -21,7 +21,7 @@ from . import lexical
 #
 
 def get_coset_length_to_ioc(text, max_coset_length=20):
-    """Gets a dictionary of Coset-Length to Ic Value
+    """ Gets a dictionary of Coset-Length to Ic Value
 
     :param str text: Text to Analyze
     :param int max_coset_length: Max Coset Length to Analyze (default 20)
@@ -45,7 +45,7 @@ def get_coset_length_to_ioc(text, max_coset_length=20):
 
 
 def get_most_likely_key_length_ioc(text, max_coset_length=20):
-    """Returns the most likely Key-Length based on the Coset Analysis
+    """ Returns the most likely Key-Length based on the Coset Analysis
 
     :param str text: Text to Analyze
     :param int max_coset_length: Max Coset Length to Analyze (default 20)

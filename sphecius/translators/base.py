@@ -18,7 +18,7 @@ from abc import ABCMeta, abstractmethod
 #   Class
 #
 
-class Translator(metaclass=ABCMeta):
+class Translator(object, metaclass=ABCMeta):
     """
     Base Translator Object
     """
