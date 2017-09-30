@@ -3,10 +3,9 @@ rail_fence.py
 
     Rail-Fence Cipher Class
 
-@author: Doug Daly
+@author: Douglas Daly
 @date: 4/10/2017
 """
-
 #
 #   Imports
 #

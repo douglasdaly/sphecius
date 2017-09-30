@@ -1,36 +1,52 @@
 # -*- coding: utf-8 -*-
 """
-Created on Wed Jan 11 17:39:41 2017
+base.py
 
-@author: doug
+    Base Alphabet class
+
+@author: Douglas Daly
+@date: 1/11/2017
 """
-
 #
 #   Imports
 #
+from abc import ABCMeta, abstractmethod
 
 
 #
 #   Class
 #
 
-class Alphabet(object):
-    """Base Alphabet Class"""
-    
+class Alphabet(metaclass=ABCMeta):
+    """
+    Base Alphabet Class
+    """
+
+    @abstractmethod
     def __init__(self):
-        """Base Default Constructor"""
-        self._alphabet = None
+        """ Abstract Constructor
+        """
+        pass
 
     def get_alphabet(self):
-        """Abstract get Alphabet Method"""
+        """ Abstract get Alphabet Method
+        """
         return self._alphabet
 
     def get_alphabet_list(self):
-        """Gets the Alphabet in List format"""
+        """ Gets the Alphabet in List format
+        """
         return list(self.get_alphabet())
 
     def i2a(self, index):
-        """Base get Letter at Index Method"""
+        """ Gets the Letter at the given Index
+
+        :param int index: Index to get letter at
+
+        :return: Letter at the given position in the alphabet
+        :rtype: str
+
+        """
         if index < 1 or index > self.size():
             return None
         return self._alphabet[index-1]

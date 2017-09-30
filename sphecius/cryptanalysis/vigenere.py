@@ -4,10 +4,9 @@ vigenere.py
 
     Cryptanalysis Functions for Vigenere Ciphers
 
-@author: Doug Daly
+@author: Douglas Daly
 @date: 4/13/2017
 """
-
 #
 #   Imports
 #

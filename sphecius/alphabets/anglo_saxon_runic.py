@@ -1,8 +1,11 @@
 # -*- coding: utf-8 -*-
 """
-Created on Wed Jan 11 17:51:54 2017
+anglo_saxon_runic.py
 
-@author: doug
+    Anglo-Saxon Runic Alphabet
+
+@author: Douglas Daly
+@date: 1/11/2017
 """
 
 #

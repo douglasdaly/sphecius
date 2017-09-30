@@ -4,7 +4,7 @@ liber_primus_to_english.py
 
     Translator Class for LP Anglo Saxon Runic to English per the Cicada Gematria
 
-@author: Doug Daly
+@author: Douglas Daly
 @date: 4/8/2017
 """
 

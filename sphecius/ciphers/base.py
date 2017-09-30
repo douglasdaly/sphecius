@@ -8,15 +8,19 @@ Created on Wed Jan 12 17:49:00 2017
 #
 #   Imports
 #
+from abc import ABCMeta, abstractmethod
+
 from ..alphabets import English
+
 
 #
 #   Classes
 #
 
-
-class Cipher(object):
-    """Base Cipher Class"""
+class Cipher(metaclass=ABCMeta):
+    """
+    Base Cipher Class
+    """
 
     def __init__(self, alphabet=English):
         """Default/Abstract Constructor"""
@@ -27,11 +31,12 @@ class Cipher(object):
         """Sets the Key for this Cipher object"""
         self._key = key.upper()
 
+    @abstractmethod
     def encrypt(self, plaintext):
         """Abstract Encrypt Method"""
         pass
 
+    @abstractmethod
     def decrypt(self, ciphertext):
         """Abstract Decrypt Method"""
         pass
-

@@ -6,17 +6,12 @@ importers.py
 
 @author: Doug Daly
 @date: 4/7/2017
-
 """
-
-#
-#   Imports
-#
-
 
 #
 #   Functions
 #
+
 def load_text_from_file(filename, section_divider='\n', line_ender='\n', skip_lines_starting_with=None):
     """Load text from File
 

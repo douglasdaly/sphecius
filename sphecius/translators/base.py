@@ -1,32 +1,35 @@
+# -*- coding: utf-8 -*-
 """
-Base.py
+base.py
 
     Base classes for the Translators.
 
-@author: Doug Daly
+@author: Douglas Daly
 @date: 4/8/2017
 """
 
 #
 #   Imports
 #
+from abc import ABCMeta, abstractmethod
 
 
 #
 #   Class
 #
 
-class Translator(object):
+class Translator(metaclass=ABCMeta):
     """
     Base Translator Object
     """
 
     def __init__(self):
-        """Default Constructor"""
+        """ Default Constructor
+        """
         self._translate_dict = self._generate_translation_dict()
 
     def translate(self, text):
-        """Function which does the Translation
+        """ Function which does the Translation
 
         :param str text: Text to Translate
 
@@ -44,7 +47,7 @@ class Translator(object):
         return ret
 
     def translate_single(self, character):
-        """Function to translate a Single character
+        """ Function to translate a Single character
 
         :param str character: Character to Translate
 
@@ -57,11 +60,12 @@ class Translator(object):
         else:
             return None
 
+    @abstractmethod
     def _generate_translation_dict(self):
-        """Generates the Translation Dictionary
+        """ Generates the Translation Dictionary
 
         :return: Dictionary of Character to Character Translation
         :rtype: dict
 
         """
-        raise NotImplementedError()
+        pass
