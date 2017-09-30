@@ -7,7 +7,6 @@ base.py
 @author: Douglas Daly
 @date: 4/8/2017
 """
-
 #
 #   Imports
 #

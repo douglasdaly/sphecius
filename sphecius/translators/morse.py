@@ -1,13 +1,15 @@
 # -*- coding: utf-8 -*-
 """
-Created on Fri Jan  6 17:43:25 2017
+morse.py
 
-@author: doug
+    Class for converting between English and morse code
+
+@author: Douglas Daly
+@date: 1/6/2017
 """
 
-
 #
-#   Imports
+#   Class Definition
 #
 
 class Morse(object):
@@ -16,15 +18,15 @@ class Morse(object):
     """
 
     def __init__(self):
-        """Default Constructor"""
-
+        """ Default Constructor
+        """
         dict_tup = self.__generate_morse_code_dictionaries()
         self.__dict_to_morse = dict_tup[0]
         self.__dict_from_morse = dict_tup[1]
 
     def __generate_morse_code_dictionaries(self):
-        """Generates a dict() object of Morse Code"""
-        
+        """ Generates a dict object of Morse Code
+        """
         dict_morse = dict()
         dict_morse['.-'] = 'a'
         dict_morse['-...'] = 'b'
@@ -76,8 +78,8 @@ class Morse(object):
         return (dict_letters, dict_morse)
 
     def convert_to(self, to_convert):
-        """Converts the given letter string to morse code"""
-        
+        """ Converts the given letter string to morse code
+        """
         to_convert = to_convert.lower()
         output = '|'
         for l in range(len(to_convert)):
@@ -93,8 +95,8 @@ class Morse(object):
         return output.strip()
 
     def convert_from(self, to_convert):
-        """Converts a morse string with spaces to the english letters"""
-        
+        """ Converts a morse string with spaces to the english letters
+        """
         # - Divy it up
         if to_convert.find('|') > -1:
             arr = to_convert.strip('|').split('|')
@@ -108,8 +110,8 @@ class Morse(object):
         return output
 
     def convert_from_no_spaces(self, to_convert, min_letters=1):
-        """Converts a string of . and -'s to Letters with no spaces/breaks in it"""
-        
+        """ Converts a string of . and -'s to Letters with no spaces/breaks in it
+        """
         cStr = ''
         outStr = ''
         
