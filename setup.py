@@ -32,6 +32,7 @@ setup(
     description='A library for cryptanalysis and cryptography.',
     keywords='cryptanalysis cryptography cryptology',
     version='0.1dev',
+    url="https://github.com/douglasdaly/sphecius",
     packages=['sphecius'],
     license='MIT',
     long_description=read('README.md')

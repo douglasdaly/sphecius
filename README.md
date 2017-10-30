@@ -1,7 +1,20 @@
-### Sphecius.git
+# Sphecius
 
-A python library for cryptanalysis, specifically for the Cicada 3301 puzzles.
+_A python library for cryptanalysis, specifically for the Cicada 3301 puzzles._
 
 
 
+### Installation
+-----
+
+You can download the package from GitHub via:
+
+``` bash
+$ git clone https://github.com/douglasdaly/sphecius
+```
+
+### Usage
+-----
+
+See the example files in the `examples` directory.
 
