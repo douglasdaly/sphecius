@@ -2,7 +2,7 @@
 """
 base.py
 
-    Base Cipher Object class.
+    Base Cipher Object class
 
 @author: Douglas Daly
 @date: 1/12/2017

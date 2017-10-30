@@ -24,7 +24,7 @@ def string_to_list(text, separator=' '):
     """ Converts a string to a list of 'letters' using the (optional) separator
 
     :param str text: Text to split
-    :param str seperator: [Optional] Separator to split string by (defaults to a space)
+    :param str seperator: [Optional] Separator to split string by
 
     :return: List of split string elements
     :rtype: list
@@ -104,12 +104,15 @@ def remove_punctuation(text):
     return text.translate(translator)
 
 
-def replace_stripped_text(original_text, stripped_text, chars_stripped=string.punctuation):
+def replace_stripped_text(original_text, stripped_text,
+                          chars_stripped=string.punctuation):
     """ Inserts punctuation back into stripped string
 
     :param str original_text: Original text with punctuation
-    :param str stripped_text: Text stripped of punctuation to put punctuation back in
-    :param list chars_stripped: [Optional] List of Stripped Characters to put back in
+    :param str stripped_text: Text stripped of punctuation to put punctuation
+                              back in
+    :param list chars_stripped: [Optional] List of Stripped Characters to put
+                                back in
 
     :return: String with stripped characters replaced
     :rtype: str
@@ -133,13 +136,15 @@ def replace_stripped_text(original_text, stripped_text, chars_stripped=string.pu
 def convert_text_to_matrix_2d(text, axis_size, axis=0, padding=None):
     """ Converts the given Text to a Matrix
 
-    Converts the given text a matrix with the given row length and optionally pads
-    the last column with the given string.
+    Converts the given text a matrix with the given row length and optionally
+    pads the last column with the given string.
 
     :param str text: Text to convert into matrix
     :param int axis_size: Fixed length of the axis to build across
-    :param int axis: [Optional] Which axis to limit (0 for Column, 1 for Rows; defaults to 0)
-    :param str padding: [Optional] Pad the text to fit with the given string (defaults to space)
+    :param int axis: [Optional] Which axis to limit (0 for Column, 1 for Rows;
+                     defaults to 0)
+    :param str padding: [Optional] Pad the text to fit with the given string
+                        (defaults to space)
 
     :return: Matrix created from the given text
     :rtype: numpy.matrix
@@ -179,7 +184,8 @@ def convert_matrix_to_text_2d(matrix, axis=0):
     Given a text matrix, convert it back into a single string.
 
     :param numpy.matrix matrix: Matrix of text to convert back to string
-    :param int axis: [Optional] Which axis to limit (0 for Column, 1 for Rows; defaults to 0)
+    :param int axis: [Optional] Which axis to limit (0 for Column, 1 for Rows;
+                     defaults to 0)
 
     :return: String converted back from matrix
     :rtype: str

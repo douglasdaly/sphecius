@@ -2,7 +2,8 @@
 """
 liber_primus_to_english.py
 
-    Translator Class for LP Anglo Saxon Runic to English (reversed) per the Cicada Gematria
+    Translator Class for LP Anglo Saxon Runic to English (reversed) per the
+    Cicada Gematria
 
 @author: Doug Daly
 @date: 4/9/2017
@@ -30,10 +31,12 @@ class LiberPrimusToEnglishReversed(Translator):
         :rtype: dict
 
         """
-        runes = ['ᚠ', 'ᚢ', 'ᚦ', 'ᚩ', 'ᚱ', 'ᚳ', 'ᚷ', 'ᚹ', 'ᚻ', 'ᚾ', 'ᛁ', 'ᛄ', 'ᛇ', 'ᛈ', 'ᛉ', 'ᛋ', 'ᛏ', 'ᛒ', 'ᛖ', 'ᛗ',
-                 'ᛚ', 'ᛝ', 'ᛟ', 'ᛞ', 'ᚪ', 'ᚫ', 'ᚣ', 'ᛡ', 'ᛠ']
-        english = ['F', 'U', 'TH', 'O', 'R', 'C', 'G', 'W', 'H', 'N', 'I', 'J', 'EO', 'P', 'X', 'S', 'T', 'B', 'E',
-                   'M', 'L', 'ING', 'OE', 'D', 'A', 'AE', 'Y', 'IO', 'EA']
+        runes = ['ᚠ', 'ᚢ', 'ᚦ', 'ᚩ', 'ᚱ', 'ᚳ', 'ᚷ', 'ᚹ', 'ᚻ', 'ᚾ', 'ᛁ', 'ᛄ',
+                 'ᛇ', 'ᛈ', 'ᛉ', 'ᛋ', 'ᛏ', 'ᛒ', 'ᛖ', 'ᛗ', 'ᛚ', 'ᛝ', 'ᛟ', 'ᛞ',
+                 'ᚪ', 'ᚫ', 'ᚣ', 'ᛡ', 'ᛠ']
+        english = ['F', 'U', 'TH', 'O', 'R', 'C', 'G', 'W', 'H', 'N', 'I', 'J',
+                   'EO', 'P', 'X', 'S', 'T', 'B', 'E', 'M', 'L', 'ING', 'OE',
+                   'D', 'A', 'AE', 'Y', 'IO', 'EA']
         english.reverse()
         ret_dict = dict(zip(runes, english))
 

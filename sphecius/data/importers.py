@@ -12,15 +12,20 @@ importers.py
 #   Functions
 #
 
-def load_text_from_file(filename, section_divider='\n', line_ender='\n', skip_lines_starting_with=None):
+def load_text_from_file(filename, section_divider='\n', line_ender='\n',
+                        skip_lines_starting_with=None):
     """ Load text from File
 
     :param str filename: Path to the File to import
-    :param str section_divider: Character used to denote page/section dividers (default is '\n')
-    :param str line_ender: Character used to denote line endings (if None lines are concatenated, default is '\n')
-    :param list skip_lines_starting_with: Skip any lines starting with a character in the given list (default is None)
+    :param str section_divider: Character used to denote page/section dividers
+                                (default is '\n')
+    :param str line_ender: Character used to denote line endings (if None lines
+                           are concatenated, default is '\n')
+    :param list skip_lines_starting_with: Skip any lines starting with a
+                                          character in the given list (default
+                                          is None)
 
-    :return: Dictionary of Dictionary, Page->Line->Text
+    :return: Dictionary of Dictionaries, Page->Line->Text
     :rtype: dict
 
     """

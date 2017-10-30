@@ -7,7 +7,6 @@ vigenere.py
 @author: Doug Daly
 @date: 3/7/2017
 """
-
 #
 #   Imports
 #
@@ -25,7 +24,8 @@ class Vigenere(Cipher):
     """
     
     def __init__(self, alphabet, initial_shift=0):
-        """Default Constructor"""
+        """ Default Constructor
+        """
         super(Vigenere, self).__init__(alphabet=alphabet)
         cryptors = self.__build_cryptors(alphabet, initial_shift)
         self.__encryptor = cryptors[0]
@@ -33,14 +33,16 @@ class Vigenere(Cipher):
 
     @staticmethod
     def __build_cryptors(alphabet, initial_shift=0):
-        """Builds the Encryption Lookup Table"""
+        """ Builds the Encryption Lookup Table
+        """
         len_alphabet = len(alphabet.get_alphabet())
         
         cipher_table = dict()
         decipher_table = dict()
         for i in range(len_alphabet):
             c_letter = alphabet.i2a(i+1)
-            c_alphabet = sh.shift_backward(alphabet.get_alphabet(), (i+initial_shift) % len_alphabet)
+            c_alphabet = sh.shift_backward(alphabet.get_alphabet(),
+                                           (i+initial_shift) % len_alphabet)
 
             cipher_table[c_letter] = dict()
             decipher_table[c_letter] = dict()
@@ -51,7 +53,14 @@ class Vigenere(Cipher):
         return cipher_table, decipher_table
 
     def encrypt(self, plaintext):
-        """Encrypts the given string"""
+        """ Encrypts the given string
+
+        :param str plaintext: Plaintext to encrypt
+
+        :return: Encrypted plaintext
+        :rtype: str
+
+        """
         if self._key is None:
             raise Exception("No valid key set!")
 
@@ -72,7 +81,14 @@ class Vigenere(Cipher):
         return sh.list_to_string(output)
     
     def decrypt(self, ciphertext):
-        """Decrypts the given Cipher Text"""
+        """ Decrypts the given Cipher Text
+
+        :param str ciphertext: Ciphertext to decrypt
+
+        :return: Decrypted ciphertext
+        :rtype: str
+
+        """
         if self._key is None:
             raise Exception("No valid key set!")
 

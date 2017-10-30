@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """
 anglo_saxon_runic.py
 
@@ -23,5 +22,6 @@ class AngloSaxonRunic(Alphabet):
     """
     
     def __init__(self):
-        """Default Constructor"""
+        """ Default Constructor
+        """
         self._alphabet = "ᚠᚢᚦᚩᚱᚳᚷᚹᚻᚾᛁᛄᛇᛈᛉᛋᛏᛒᛖᛗᛚᛝᛟᛞᚪᚫᚣᛡᛠ"

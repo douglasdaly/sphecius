@@ -110,7 +110,7 @@ class Morse(object):
         return output
 
     def convert_from_no_spaces(self, to_convert, min_letters=1):
-        """ Converts a string of . and -'s to Letters with no spaces/breaks in it
+        """ Converts a string of . and -'s to Letters with no spaces/breaks
         """
         cStr = ''
         outStr = ''

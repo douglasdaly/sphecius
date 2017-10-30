@@ -92,7 +92,8 @@ class Hill(Cipher):
         text = sh.remove_punctuation(text)
 
         # - Get Parameters Needed
-        text_mat = sh.convert_text_to_matrix_2d(text, axis_size=key.shape[0], axis=1, padding=padding)
+        text_mat = sh.convert_text_to_matrix_2d(text, axis_size=key.shape[0],
+                                                axis=1, padding=padding)
         v_a2i = np.vectorize(self._alphabet.a2i)
         num_mat = v_a2i(text_mat)
 
@@ -116,7 +117,9 @@ class Hill(Cipher):
 
         """
         try:
-            inv_key = (np.matrix(sympy.Matrix(key).inv_mod(self._alphabet.size())) + 1).astype(int)
+            inv_key = (np.matrix(sympy.Matrix(key)
+                                 .inv_mod(self._alphabet.size())) + 1)\
+                       .astype(int)
             return inv_key
         except sympy.NonSquareMatrixError:
             return None

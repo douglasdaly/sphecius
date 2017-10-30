@@ -46,15 +46,21 @@ class Caesar(Cipher):
         self._key = shift
 
         if shift > 0:
-            self.__shifted = sh.shift_forward(self._alphabet.get_alphabet(), shift)
+            self.__shifted = sh.shift_forward(self._alphabet.get_alphabet(),
+                                              shift)
         else:
-            self.__shifted = sh.shift_backward(self._alphabet.get_alphabet(), -shift)
+            self.__shifted = sh.shift_backward(self._alphabet.get_alphabet(),
+                                               -shift)
 
-        self.__encryptor = dict(zip(self._alphabet.get_alphabet(), self.__shifted))
-        self.__decryptor = dict(zip(self.__shifted, self._alphabet.get_alphabet()))
+        self.__encryptor = dict(zip(self._alphabet.get_alphabet(),
+                                    self.__shifted))
+        self.__decryptor = dict(zip(self.__shifted,
+                                    self._alphabet.get_alphabet()))
 
     def encrypt(self, plaintext):
-        """ Encrypts the given plaintext based on the set parameters of this class
+        """
+        Encrypts the given plaintext based on the set parameters of this
+        class
         """
         if self._key is None:
             raise Exception("No valid key set!")
@@ -71,7 +77,9 @@ class Caesar(Cipher):
         return output
 
     def decrypt(self, ciphertext):
-        """ Decrypts the given Ciphertext based on the set parameters of this class
+        """
+        Decrypts the given Ciphertext based on the set parameters of this
+        class
         """
         if self._key is None:
             raise Exception("No valid key set!")

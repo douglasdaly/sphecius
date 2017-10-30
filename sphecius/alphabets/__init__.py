@@ -9,7 +9,7 @@ from .anglo_saxon_runic import AngloSaxonRunic
 #   All Variable Setup
 #
 __all__ = [
-    'base',
-    'english',
-    'anglo_saxon_runic'
+    'Alphabet',
+    'English',
+    'AngloSaxonRunic'
 ]
