@@ -18,3 +18,7 @@ $ git clone https://github.com/douglasdaly/sphecius
 
 See the example files in the `examples` directory.
 
+### License
+-----
+
+This project is copyright Douglas Daly and is licensed under the MIT License (see `LICENSE` file).
