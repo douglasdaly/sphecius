@@ -34,5 +34,5 @@ setup(
     version='0.1dev',
     packages=['sphecius'],
     license='MIT',
-    long_description=read('README.rst')
+    long_description=read('README.md')
 )
